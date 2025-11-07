@@ -1,0 +1,345 @@
+/* styles.css - Compatible CSS2 (evita propiedades modernas no soportadas) */
+
+/* ------------------------------------------------------------
+   Reset mínimo
+   Propósito: eliminar márgenes y paddings por defecto, fijar
+   tipografía y color base para todo el documento.
+   Ajustes: cambiar fuente aquí si se incorpora webfont corporativo.
+   ------------------------------------------------------------ */
+body, h1, h2, h3, h4, h5, p, ul, li, form, input, table {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #222;
+}
+
+/* ------------------------------------------------------------
+   Layout global
+   #page-wrapper: contenedor principal, aplica color de fondo
+   y sirve de referencia para toda la interfaz.
+   ------------------------------------------------------------ */
+#page-wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: #f4f6f8;
+}
+
+/* ============================================================
+   Login
+   Bloque responsable del estilo de la pantalla de acceso.
+   Incluye contenedor, tarjeta, marca y campos de formulario.
+   ============================================================ */
+
+/* login-container
+   - ocupa toda la altura del viewport para centrar verticalmente
+   - compatible con navegadores más antiguos (display:block)
+*/
+.login-container {
+  width: 100%;
+  height: 100vh;
+  display: block;
+  background-color: #f4f6f8;
+}
+
+/* login-card
+   - tarjeta blanca centrada con borde suave
+   - width fijo para controlar experiencia en pantallas de escritorio
+   - para mobile, se controla vía media query inferior
+*/
+.login-card {
+  width: 360px;
+  margin: 60px auto;
+  padding: 22px;
+  background-color: #ffffff;
+  border: 1px solid #d6d9dc;
+  box-shadow: none;
+}
+
+/* brand / title
+   - identidad visual: color corporativo y tamaño de texto
+*/
+.brand {
+  font-size: 20px;
+  color: #1f497d;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 16px;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+/* form labels y campos
+   - labels en bloque para accesibilidad y asociación visual
+   - input con padding y borde neutro
+*/
+.form label {
+  display: block;
+  font-size: 12px;
+  color: #555;
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #bfc7d0;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+/* ============================================================
+   Botones
+   Reutilizables: .btn base, variantes .primary y .secondary
+   - Mantener contraste y consistencia en toda la app.
+   ============================================================ */
+
+/* .btn
+   - estilo base: bloque inline para botones en línea y formularios
+   - si se añade iconografía, alinear con padding
+*/
+.btn {
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: #2d6ca2;
+  color: #ffffff;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+/* .btn.primary
+   - acción principal (ej. Ingresar)
+   - ancho completo para formularios de login
+*/
+.btn.primary {
+  background-color: #1f497d;
+  width: 100%;
+}
+
+/* .btn.secondary
+   - acciones menos prioritarias (ej. cancelar, publicar)
+*/
+.btn.secondary {
+  background-color: #7a8aa0;
+  color: #fff;
+}
+
+/* ------------------------------------------------------------
+   Helpers pequeños
+   - clases utilitarias para texto y tamaños de input reutilizables
+   ------------------------------------------------------------ */
+.small { font-size: 12px; color: #666; }
+.row { margin-top: 6px; }
+.form-inline label { display: inline-block; margin-right: 6px; }
+.input.small { width: 160px; }
+.input.tiny { width: 60px; }
+
+/* ============================================================
+   Sidebar (navegación lateral)
+   - diseño fijo a la izquierda; color corporativo oscuro;
+   - usar la misma anchura si se modifica margin-left en .main
+   ============================================================ */
+
+/* .sidebar
+   - float:left para compatibilidad CSS2; occupy full height via 100vh
+   - box-sizing usado para asegurar padding consistente (si el navegador lo soporta)
+*/
+.sidebar {
+  width: 220px;
+  float: left;
+  background-color: #16324a;
+  color: #ffffff;
+  height: 100vh;
+  padding: 18px 12px;
+  box-sizing: border-box;
+}
+
+/* Título del sidebar */
+.sidebar h1 {
+  font-size: 18px;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+/* Lista de navegación
+   - list-style: none para eliminar bullets y controlar espaciado
+*/
+.nav {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.nav-item {
+  margin-bottom: 10px;
+}
+
+/* .nav-link
+   - bloque clicable con padding; cambio visual al pasar el cursor
+   - usar border-left para indicar selección de forma visible
+*/
+.nav-link {
+  color: #d4e7f7;
+  text-decoration: none;
+  display: block;
+  padding: 8px 6px;
+  font-size: 14px;
+  border-left: 4px solid transparent;
+}
+
+.nav-link:hover {
+  background-color: #0f2b3d;
+  color: #fff;
+  border-left: 4px solid #74a3d6;
+}
+
+/* Sidebar footer
+   - posición absoluta dentro del viewport para mantener 'Cerrar sesión' al fondo
+   - si se cambia el padding del sidebar, ajustar left/bottom aquí
+*/
+.sidebar-footer {
+  position: absolute;
+  bottom: 20px;
+  left: 18px;
+}
+
+/* ============================================================
+   Área principal (Main) y Topbar
+   - margin-left debe coincidir con la anchura de .sidebar
+   - topbar contiene título de página y usuario
+   ============================================================ */
+.main {
+  margin-left: 220px;
+  padding: 18px;
+}
+
+.topbar {
+  height: 48px;
+  border-bottom: 1px solid #e3e6e9;
+  margin-bottom: 12px;
+}
+
+.page-title {
+  font-size: 18px;
+  color: #1f497d;
+  line-height: 48px;
+}
+
+.user-info {
+  float: right;
+  font-size: 13px;
+  color: #666;
+  margin-top: 12px;
+}
+
+/* Content padding para separar del topbar y footer visual */
+.content {
+  padding: 6px 0 60px 0;
+}
+
+/* ============================================================
+   Cards y Grid
+   - tarjetas (cards) para métricas y secciones resumidas
+   - grid de 3 columnas usando float para compatibilidad CSS2
+   ============================================================ */
+
+/* Card base */
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e0e3e6;
+  padding: 12px;
+  margin-bottom: 14px;
+}
+
+/* Card pequeña para layout en columnas
+   - width 30% + margin-right 3.333% para 3 columnas equilibradas
+   - última card remueve margin-right para evitar overflow
+*/
+.card.small {
+  width: 30%;
+  float: left;
+  margin-right: 3.333%;
+  box-sizing: border-box;
+}
+
+.card.small:last-child { margin-right: 0; }
+
+/* Clearfix simple compatible CSS2 */
+.grid:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.section h3 { color: #1f497d; margin-bottom: 8px; }
+
+/* ============================================================
+   Tablas
+   - estilo simple y corporativo para listados: menús, reservas,
+     pedidos, usuarios. Mantener padding uniforme para legibilidad.
+   ============================================================ */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+
+.table th {
+  text-align: left;
+  background-color: #f0f4f8;
+  padding: 8px;
+  border: 1px solid #e1e6ea;
+  font-size: 13px;
+}
+
+.table td {
+  padding: 8px;
+  border: 1px solid #e1e6ea;
+  font-size: 13px;
+}
+
+/* Variante compacta para tablas en paneles o reportes */
+.table.small td, .table.small th { padding: 6px; font-size: 12px; }
+
+/* ============================================================
+   Helpers y utilidades
+   - reglas generales como separadores y notas de pie
+   ============================================================ */
+hr {
+  border: none;
+  border-top: 1px solid #e6eaee;
+  margin: 16px 0;
+}
+
+.footer-note { margin-top: 10px; font-size: 12px; color: #777; text-align: center; }
+
+/* Links: color corporativo y comportamiento hover */
+a.link, a {
+  color: #1f497d;
+  text-decoration: none;
+}
+
+a.link:hover, a:hover { text-decoration: underline; }
+
+/* ============================================================
+   Responsive fallback (simple)
+   - media queries usadas aquí son modernas; si se requiere
+     compatibilidad estricta CSS2, eliminar este bloque y proporcionar
+     una vista móvil alternativa.
+   ============================================================ */
+@media screen and (max-width: 800px) {
+  /* Oculta la sidebar en pantallas pequeñas */
+  .sidebar { display: none; }
+
+  /* Main sin margen lateral para usar todo el ancho */
+  .main { margin-left: 0; padding: 12px; }
+
+  /* Cards pasan a ancho completo para lectura vertical */
+  .card.small { width: 100%; margin-right: 0; margin-bottom: 12px; float: none; }
+}
