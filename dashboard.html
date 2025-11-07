@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard - Portal Delicias Gourmet</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div id="page-wrapper">
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <h1>Delicias Gourmet</h1>
+      </div>
+      <ul class="nav">
+        <li class="nav-item"><a href="#inicio" class="nav-link">Inicio</a></li>
+        <li class="nav-item"><a href="#menus" class="nav-link">Menús</a></li>
+        <li class="nav-item"><a href="#reservas" class="nav-link">Reservas</a></li>
+        <li class="nav-item"><a href="#pedidos" class="nav-link">Pedidos</a></li>
+        <li class="nav-item"><a href="#reportes" class="nav-link">Reportes</a></li>
+        <li class="nav-item"><a href="#config" class="nav-link">Configuración</a></li>
+      </ul>
+      <div class="sidebar-footer">
+        <a href="index.html" class="btn secondary">Cerrar sesión</a>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="topbar">
+        <div class="topbar-left">
+          <h2 class="page-title">Panel de Administración</h2>
+        </div>
+        <div class="topbar-right">
+          <span class="user-info">Admin • Delicias Gourmet</span>
+        </div>
+      </div>
+
+      <div class="content">
+        <!-- Sección Inicio -->
+        <div id="inicio" class="section">
+          <h3>Resumen General</h3>
+
+          <div class="grid">
+            <div class="card small">
+              <h4>Ventas Hoy</h4>
+              <p class="big-value">$318.000</p>
+              <p>Pedidos completados: <strong>63</strong></p>
+              <button class="btn">Ver detalle</button>
+            </div>
+
+            <div class="card small">
+              <h4>Reservas Activas</h4>
+              <p class="big-value">18</p>
+              <p>Mesas reservadas: <strong>12</strong></p>
+              <button class="btn">Gestión de reservas</button>
+            </div>
+
+            <div class="card small">
+              <h4>Pedidos En Curso</h4>
+              <p class="big-value">7</p>
+              <p>En preparación: <strong>5</strong></p>
+              <button class="btn">Ver pedidos</button>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <!-- Sección Menús -->
+        <div id="menus" class="section">
+          <h3>Menús por Sucursal</h3>
+
+          <table class="table">
+            <thead>
+              <tr><th>Sucursal</th><th>Menú activo</th><th>Última actualización</th><th>Acciones</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Providencia</td><td>Primavera</td><td>2025-10-15</td><td><button class="btn">Editar</button> <button class="btn secondary">Publicar</button></td></tr>
+              <tr><td>Las Condes</td><td>Temporada</td><td>2025-11-01</td><td><button class="btn">Editar</button> <button class="btn secondary">Publicar</button></td></tr>
+              <tr><td>Ñuñoa</td><td>Verano</td><td>2025-09-20</td><td><button class="btn">Editar</button> <button class="btn secondary">Publicar</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <hr>
+
+        <!-- Sección Reservas -->
+        <div id="reservas" class="section">
+          <h3>Reservas</h3>
+
+          <table class="table">
+            <thead>
+              <tr><th>Reserva ID</th><th>Cliente</th><th>Sucursal</th><th>Fecha / Hora</th><th>Pax</th><th>Estado</th><th>Acciones</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>R-1023</td><td>María López</td><td>Providencia</td><td>2025-11-07 20:00</td><td>4</td><td>Confirmada</td><td><button class="btn">Ver</button> <button class="btn secondary">Cancelar</button></td></tr>
+              <tr><td>R-1024</td><td>Carlos Pérez</td><td>Las Condes</td><td>2025-11-07 21:00</td><td>2</td><td>Pendiente</td><td><button class="btn">Confirmar</button> <button class="btn secondary">Editar</button></td></tr>
+            </tbody>
+          </table>
+
+          <div class="card">
+            <h4>Registrar Reserva Telefónica</h4>
+            <form class="form-inline" action="#" method="post">
+              <label for="r-name">Nombre</label>
+              <input type="text" id="r-name" class="input small" />
+              <label for="r-sucursal">Sucursal</label>
+              <select id="r-sucursal" class="input small">
+                <option>Providencia</option>
+                <option>Las Condes</option>
+                <option>Ñuñoa</option>
+              </select>
+              <label for="r-datetime">Fecha / Hora</label>
+              <input type="text" id="r-datetime" class="input small" value="2025-11-07 20:00" />
+              <label for="r-pax">Pax</label>
+              <input type="text" id="r-pax" class="input tiny" value="2" />
+              <button class="btn">Registrar</button>
+            </form>
+          </div>
+        </div>
+
+        <hr>
+
+        <!-- Sección Pedidos -->
+        <div id="pedidos" class="section">
+          <h3>Pedidos (Estáticos)</h3>
+
+          <table class="table">
+            <thead>
+              <tr><th>Pedido ID</th><th>Cliente</th><th>Sucursal</th><th>Tipo</th><th>Estado</th><th>Total</th><th>Acciones</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>P-2045</td><td>Ana Gómez</td><td>Providencia</td><td>Para llevar</td><td>En preparación</td><td>$12.500</td><td><button class="btn">Ver</button> <button class="btn secondary">Marcar listo</button></td></tr>
+              <tr><td>P-2046</td><td>Juan Ruiz</td><td>Las Condes</td><td>En local</td><td>Listo</td><td>$28.000</td><td><button class="btn">Ver</button> <button class="btn secondary">Despachar</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <hr>
+
+        <!-- Sección Reportes -->
+        <div id="reportes" class="section">
+          <h3>Reportes</h3>
+
+          <div class="card">
+            <h4>Ventas por Sucursal</h4>
+            <table class="table small">
+              <thead><tr><th>Sucursal</th><th>Ventas Mes</th><th>Pedidos</th></tr></thead>
+              <tbody>
+                <tr><td>Providencia</td><td>$1.200.000</td><td>320</td></tr>
+                <tr><td>Las Condes</td><td>$980.000</td><td>255</td></tr>
+              </tbody>
+            </table>
+            <button class="btn">Exportar CSV</button>
+          </div>
+        </div>
+
+        <hr>
+
+        <!-- Sección Configuración -->
+        <div id="config" class="section">
+          <h3>Configuración</h3>
+          <div class="card">
+            <h4>Usuarios y Roles</h4>
+            <table class="table small">
+              <thead><tr><th>Usuario</th><th>Rol</th><th>Sucursal</th><th>Acciones</th></tr></thead>
+              <tbody>
+                <tr><td>admin@delicias.cl</td><td>Super Admin</td><td>Global</td><td><button class="btn">Editar</button></td></tr>
+                <tr><td>cocina1@prov.cl</td><td>Cocina</td><td>Providencia</td><td><button class="btn">Editar</button></td></tr>
+              </tbody>
+            </table>
+            <button class="btn">Crear usuario</button>
+          </div>
+        </div>
+
+      </div> <!-- content -->
+    </div> <!-- main -->
+  </div> <!-- page-wrapper -->
+</body>
+</html>
