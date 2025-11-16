@@ -111,7 +111,9 @@
       if (hasError) {
         // Colocar foco en el primer campo con error
         var firstInvalid = form.querySelector('[aria-invalid="true"]');
-        if (firstInvalid && firstInvalid.focus) { firstInvalid.focus(); }
+        if (firstInvalid && firstInvalid.focus) {
+          firstInvalid.focus();
+        }
         return;
       }
 
@@ -123,13 +125,17 @@
       setTimeout(function () {
         showStatus(form, 'Acceso exitoso. Redirigiendo...');
         // redirige a dashboard.html
-        window.location.href = form.getAttribute('action') || 'dashboard.html';
+        window.location.href = form.getAttribute('action') || 'dashboard/dashboard.html';
       }, REDIRECT_DELAY_MS);
     }, false);
 
     // Limpia mensajes de error al escribir
-    inputEmail.addEventListener('input', function () { clearError(inputEmail); }, false);
-    inputPassword.addEventListener('input', function () { clearError(inputPassword); }, false);
+    inputEmail.addEventListener('input', function () {
+      clearError(inputEmail);
+    }, false);
+    inputPassword.addEventListener('input', function () {
+      clearError(inputPassword);
+    }, false);
   }
 
   // Desactiva/activa inputs y botones del form

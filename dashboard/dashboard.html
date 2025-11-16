@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dashboard - Portal Delicias Gourmet</title>
+  <link rel="stylesheet" href="styles-dashboard.css">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <div id="page-wrapper">
+    <aside class="sidebar" id="sidebar" aria-labelledby="brand-title" role="complementary">
+      <div class="sidebar-brand">
+        <h1 id="brand-title">Delicias Gourmet</h1>
+      </div>
+
+      <nav class="nav" aria-label="Navegación principal">
+        <ul>
+          <li><a href="#inicio" class="nav-link" aria-current="page">Inicio</a></li>
+          <li><a href="#menus" class="nav-link">Menús</a></li>
+          <li><a href="#reservas" class="nav-link">Reservas</a></li>
+          <li><a href="cocina/cocina.html" class="nav-link">Pedidos</a></li>
+          <li><a href="#reportes" class="nav-link">Reportes</a></li>
+          <li><a href="#config" class="nav-link">Configuración</a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="C:\Users\Succi\Informatica\DuocUC\ingenieria_de_requisitos\Nueva carpeta\index.html" class="btn btn-secondary" role="button" aria-label="Cerrar sesión">Cerrar sesión</a>
+      </div>
+    </aside>
+
+    <main id="main" class="main" role="main" aria-labelledby="page-title">
+      <header class="topbar" role="banner">
+        <div class="topbar-left">
+          <h2 id="page-title" class="page-title">Panel de Administración</h2>
+        </div>
+        <div class="topbar-right" role="status" aria-live="polite">
+          <span class="user-info">Admin • Delicias Gourmet</span>
+        </div>
+      </header>
+
+      <div class="content">
+        <section id="inicio" class="section" aria-labelledby="inicio-title">
+          <h3 id="inicio-title">Resumen General</h3>
+
+          <div class="grid" role="list">
+            <article class="card small" role="listitem" aria-labelledby="ventas-today">
+              <h4 id="ventas-today">Ventas Hoy</h4>
+              <p class="big-value" aria-hidden="true">$318.000</p>
+              <p>Pedidos completados: <strong>63</strong></p>
+              <button class="btn" type="button" aria-label="Ver detalle de ventas">Ver detalle</button>
+            </article>
+
+            <article class="card small" role="listitem" aria-labelledby="reservas-activas">
+              <h4 id="reservas-activas">Reservas Activas</h4>
+              <p class="big-value">18</p>
+              <p>Mesas reservadas: <strong>12</strong></p>
+              <button class="btn" type="button" aria-label="Gestión de reservas">Gestión de reservas</button>
+            </article>
+
+            <article class="card small" role="listitem" aria-labelledby="pedidos-curso">
+              <h4 id="pedidos-curso">Pedidos En Curso</h4>
+              <p class="big-value">7</p>
+              <p>En preparación: <strong>5</strong></p>
+              <button class="btn" type="button" aria-label="Ver pedidos en curso">Ver pedidos</button>
+            </article>
+          </div>
+        </section>
+
+  <footer class="site-footer" role="contentinfo" aria-label="Pie de página del sitio">
+    <div class="container">
+      <p>&copy; <time datetime="2025">2025</time> Delicias Gourmet. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>
