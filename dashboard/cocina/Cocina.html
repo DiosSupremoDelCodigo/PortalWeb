@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Panel Cocina - Delicias Gourmet</title>
+<link rel="stylesheet" href="styles-cocina.css">
+</head>
+<body>
+
+<h1>Panel Cocina</h1>
+
+<table id="tabla-pedidos-cocina">
+  <thead>
+    <tr>
+      <th>ID Pedido</th>
+      <th>Cliente</th>
+      <th>Items</th>
+      <th>Estado</th>
+      <th>Prioridad</th>
+      <th>Incidencias</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-id="P-1001">
+      <td>P-1001</td>
+      <td>María López</td>
+      <td>
+        <ul style="padding-left: 16px; margin: 0;">
+          <li>Pizza Margarita</li>
+          <li>Ensalada César</li>
+        </ul>
+      </td>
+      <td><span class="status pendiente">Pendiente</span></td>
+      <td><button class="btn btn-urgent" onclick="toggleUrgente(this)">Marcar urgente</button></td>
+      <td>
+        <div class="incidencia-container">
+          <textarea placeholder="Anotar incidencia..." oninput="guardarIncidencia(this)"></textarea>
+        </div>
+      </td>
+      <td>
+        <button class="btn" onclick="aceptarPedido(this)">Aceptar</button>
+        <button class="btn btn-danger" onclick="rechazarPedido(this)">Rechazar</button>
+      </td>
+    </tr>
+    <tr data-id="P-1002">
+      <td>P-1002</td>
+      <td>Carlos Pérez</td>
+      <td>
+        <ul style="padding-left: 16px; margin: 0;">
+          <li>Hamburguesa Doble</li>
+          <li>Papas Fritas</li>
+        </ul>
+      </td>
+      <td><span class="status pendiente">Pendiente</span></td>
+      <td><button class="btn btn-urgent" onclick="toggleUrgente(this)">Marcar urgente</button></td>
+      <td>
+        <div class="incidencia-container">
+          <textarea placeholder="Anotar incidencia..." oninput="guardarIncidencia(this)"></textarea>
+        </div>
+      </td>
+      <td>
+        <button class="btn" onclick="aceptarPedido(this)">Aceptar</button>
+        <button class="btn btn-danger" onclick="rechazarPedido(this)">Rechazar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br />
+
+<h2>Pedidos en Preparación</h2>
+<table id="tabla-preparacion">
+  <thead>
+    <tr>
+      <th>ID Pedido</th>
+      <th>Ítem</th>
+      <th>Estado Preparación</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-pedido="P-1001" data-item="Pizza Margarita">
+      <td>P-1001</td>
+      <td>Pizza Margarita</td>
+      <td><span class="status en-preparacion">En preparación</span></td>
+      <td>
+        <button class="btn" onclick="marcarInicioPreparacion(this)">Iniciar</button>
+        <button class="btn" onclick="marcarFinPreparacion(this)" disabled>Finalizar</button>
+      </td>
+    </tr>
+    <tr data-pedido="P-1001" data-item="Ensalada César">
+      <td>P-1001</td>
+      <td>Ensalada César</td>
+      <td><span class="status pendiente">Pendiente</span></td>
+      <td>
+        <button class="btn" onclick="marcarInicioPreparacion(this)">Iniciar</button>
+        <button class="btn" onclick="marcarFinPreparacion(this)" disabled>Finalizar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<script src="script-cocina.js" defer></script>
+
+</body>
+</html>

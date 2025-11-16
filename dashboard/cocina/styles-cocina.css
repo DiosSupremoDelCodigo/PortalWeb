@@ -1,0 +1,173 @@
+:root{
+  --bg: #f6f7f9;
+  --card: #ffffff;
+  --primary: #c94b4b;
+  --primary-600: #b43f3f;
+  --muted: #6b7280;
+  --surface-1: #f0f2f5;
+  --radius: 8px;
+  --gap: 1rem;
+  --max-width: 1100px;
+  --shadow: 0 6px 20px rgba(11,20,40,0.08);
+  --transition-fast: 180ms ease;
+  --type-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Modificado para usar variables y ajustarse a la paleta */
+body {
+  margin: 0;
+  font-family: var(--type-sans);
+  background-color: var(--bg);
+  color: #0b1428;                /* texto principal ligeramente oscuro */
+  padding: calc(var(--gap) * 1.5);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Título */
+h1 {
+  color: #0b1428;
+  margin-bottom: calc(var(--gap) * 1.5);
+  font-size: 1.5rem;
+  letter-spacing: 0.2px;
+}
+
+/* Tablas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* Encabezado de tabla */
+thead {
+  background-color: var(--primary-600);
+  color: white;
+}
+
+/* Celdas */
+th,
+td {
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(11,20,40,0.04);
+  font-size: 0.95rem;
+}
+
+/* Hover de filas */
+tbody tr:hover {
+  background-color: var(--surface-1);
+  transition: background-color var(--transition-fast);
+}
+
+/* Botones (primarios usan --primary) */
+.btn {
+  background-color: var(--primary);
+  border: none;
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: calc(var(--radius) * 0.5);
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 600;
+  margin-right: 0.3rem;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  box-shadow: 0 4px 12px rgba(201,75,75,0.08);
+}
+.btn:hover:not(:disabled) {
+  background-color: var(--primary-600);
+  transform: translateY(-2px);
+}
+.btn:disabled {
+  background-color: rgba(107,114,128,0.22); /* usa tono apagado cercano a --muted */
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Botón peligro (mantengo rojo clásico) */
+.btn-danger {
+  background-color: #d9534f;
+}
+.btn-danger:hover:not(:disabled) {
+  background-color: #b23126;
+}
+
+/* Urgente: más visible pero teniendo en cuenta la paleta */
+.btn-urgent {
+  background: linear-gradient(90deg, #ff964f, #ff6b3a);
+  color: white;
+  box-shadow: 0 6px 18px rgba(255,108,61,0.12);
+}
+.btn-urgent:hover:not(:disabled) {
+  filter: brightness(0.95);
+}
+
+/* Badges de estado (ligeramente ajustados) */
+.status {
+  padding: 0.22rem 0.5rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: white;
+  display: inline-block;
+}
+
+/* Mapas de color — puedes ajustar a gusto */
+.status.pendiente {
+  background-color: #f59e0b; /* naranja suave para pendiente */
+}
+.status.en-preparacion {
+  background-color: var(--primary);
+}
+.status.listo {
+  background-color: #16a34a; /* verde */
+}
+.status.rechazado {
+  background-color: #d9534f;
+}
+
+/* Textarea (incidencias) */
+textarea {
+  width: 100%;
+  min-height: 60px;
+  resize: vertical;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border-radius: calc(var(--radius) * 0.6);
+  border: 1px solid rgba(11,20,40,0.06);
+  font-family: inherit;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+textarea:focus {
+  outline: none;
+  border-color: rgba(201,75,75,0.28);
+  box-shadow: 0 6px 18px rgba(180,63,63,0.06);
+}
+
+/* Contenedor de incidencias */
+.incidencia-container {
+  margin-top: 0.5rem;
+}
+
+/* Accesibilidad: foco visible coherente con paleta */
+:focus-visible {
+  outline: 3px solid rgba(180,63,63,0.14);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Pequeña respuesta para móviles */
+@media (max-width: 720px) {
+  body { padding: calc(var(--gap) * 0.8); }
+  th, td { padding: 0.6rem 0.75rem; font-size: 0.92rem; }
+  table { display: block; overflow-x: auto; }
+}
+
+/* Respeta preferencia de reducción de movimiento */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
