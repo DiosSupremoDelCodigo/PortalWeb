@@ -1,11 +1,3 @@
-/* styles-cocina.css
-   Panel Cocina - Delicias Gourmet
-   Diseñado para enlazar sin modificar el HTML existente.
-*/
-
-/* -------------------------
-   Variables globales
-   ------------------------- */
 :root{
   --bg: #f6f7f9;
   --card: #ffffff;
@@ -21,230 +13,349 @@
   --type-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
-/* -------------------------
-   Reset y base
-   ------------------------- */
+/* ------------------------------------------------------------
+   Reset mínimo / global
+   ------------------------------------------------------------ */
 *,
 *::before,
-*::after { box-sizing: border-box; }
+*::after {
+  box-sizing: border-box;
+}
 
-html, body { height: 100%; }
+html, body {
+  height: 100%;
+}
 
-body {
+body, h1, h2, h3, h4, h5, p, ul, li, form, input, table {
   margin: 0;
-  font-family: var(--type-sans);
-  background: var(--bg);
-  color: #0b1428;
+  padding: 0;
+  font-family: var(--type-sans, Arial, Helvetica, sans-serif);
+  color: var(--muted, #222);
+  background-color: var(--bg, #f6f7f9);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.4;
-  font-size: 16px;
-  padding: 1rem;
-  display: flex;
-  justify-content: center;
+  line-height: 1.35;
 }
 
-/* Contenedor centrado (no modifica HTML) */
-body > * {
-  max-width: var(--max-width);
+/* Skip link accesible */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  left: 8px;
+  top: 8px;
+  width: auto;
+  height: auto;
+  padding: 8px 12px;
+  background: var(--card, #fff);
+  border: 1px solid rgba(0,0,0,0.1);
+  z-index: 9999;
+}
+
+/* ------------------------------------------------------------
+   Page wrapper
+   ------------------------------------------------------------ */
+#page-wrapper {
   width: 100%;
+  min-height: 100%;
+  background-color: var(--bg, #f6f7f9);
 }
 
-/* Títulos */
-h1 { margin: 0 0 0.6rem 0; font-size: 1.5rem; }
-h2 { margin: 1.25rem 0 0.5rem 0; font-size: 1.125rem; }
+/* ============================================================
+   Login
+   ============================================================ */
+.login-container {
+  width: 100%;
+  height: 100vh;
+  display: block;
+  background-color: var(--bg, #f6f7f9);
+}
 
-/* -------------------------
-   Tablas: apariencia y responsive
-   ------------------------- */
-table {
+/* Tarjeta de login */
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  margin: calc(var(--gap, 1rem) * 3) auto;
+  padding: calc(var(--gap, 1rem) * 1.5);
+  background-color: var(--card, #ffffff);
+  border: 1px solid var(--surface-1, #e6e9ee);
+  border-radius: var(--radius, 8px);
+  box-shadow: var(--shadow, 0 6px 20px rgba(11,20,40,0.08));
+}
+
+/* Header / marca */
+.login-header { text-align: center; margin-bottom: calc(var(--gap, 1rem) * 0.5); }
+
+.brand {
+  font-size: 1.25rem; /* 20px */
+  color: var(--primary, #c94b4b);
+  margin-bottom: 0.25rem;
+  line-height: 1;
+}
+
+.title {
+  font-size: 1rem; /* 16px */
+  color: #222;
+  margin-bottom: calc(var(--gap, 1rem) * 0.5);
+}
+
+/* Form labels y campos */
+.form label {
+  display: block;
+  font-size: 0.875rem; /* 14px */
+  color: var(--muted, #555);
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.55rem;
+  border: 1px solid #d6dbe2;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(201,75,75,0.08);
+  border-color: var(--primary-600, #b43f3f);
+}
+
+/* Help text */
+.help-text {
+  display: block;
+  font-size: 0.82rem;
+  color: #8a8f98;
+  margin-bottom: 0.25rem;
+}
+
+/* Form-errors */
+.form-errors {
+  background: #fff5f5;
+  color: #8a1f1f;
+  border: 1px solid rgba(196,75,75,0.15);
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   Botones
+   ============================================================ */
+.btn {
+  display: inline-block;
+  padding: 0.55rem 0.9rem;
+  background-color: var(--primary, #c94b4b);
+  color: #ffffff;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  border-radius: calc(var(--radius, 8px) / 2);
+  transition: background var(--transition-fast, 180ms ease), transform var(--transition-fast, 180ms ease);
+}
+
+.btn:focus { outline: 3px solid rgba(201,75,75,0.12); }
+
+.btn.primary {
+  background-color: var(--primary, #c94b4b);
+  width: 100%;
+  display: block;
+}
+
+.btn.primary:hover {
+  background-color: var(--primary-600, #b43f3f);
+}
+
+.btn.secondary {
+  background-color: #7a8aa0;
+  color: #fff;
+}
+
+/* Small helpers */
+.small { font-size: 0.85rem; color: #6b7280; }
+.row { margin-top: 0.5rem; }
+.form-inline label { display: inline-block; margin-right: 0.5rem; }
+.input.small { width: 160px; }
+.input.tiny { width: 60px; }
+
+/* ============================================================
+   Sidebar (mantengo la estructura, pero aplico variables)
+   ============================================================ */
+.sidebar {
+  width: 220px;
+  float: left;
+  background-color: var(--primary, #c94b4b);
+  color: #ffffff;
+  height: 100vh;
+  padding: 18px 12px;
+}
+
+.sidebar h1 {
+  font-size: 1.125rem;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+/* Nav */
+.nav {
+  list-style: none;
+  margin-top: 10px;
+  padding-left: 0;
+}
+
+.nav-item {
+  margin-bottom: 10px;
+}
+
+.nav-link {
+  color: rgba(255,255,255,0.9);
+  text-decoration: none;
+  display: block;
+  padding: 8px 6px;
+  font-size: 0.95rem;
+  border-left: 4px solid transparent;
+}
+
+.nav-link:hover {
+  background-color: rgba(0,0,0,0.06);
+  color: #fff;
+  border-left: 4px solid rgba(255,255,255,0.12);
+}
+
+/* Sidebar footer (posición absoluta dentro del sidebar) */
+.sidebar-footer {
+  position: absolute;
+  bottom: 20px;
+  left: 18px;
+}
+
+/* ============================================================
+   Área principal (Main) y Topbar
+   ============================================================ */
+.main {
+  margin-left: 220px;
+  padding: 18px;
+  min-height: 100vh;
+  max-width: var(--max-width, 1100px);
+}
+
+.topbar {
+  height: 48px;
+  border-bottom: 1px solid var(--surface-1, #e3e6e9);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.page-title {
+  font-size: 1.125rem;
+  color: var(--primary, #c94b4b);
+  line-height: 48px;
+  display: inline-block;
+}
+
+.user-info {
+  float: right;
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-top: 12px;
+}
+
+/* Content */
+.content {
+  padding: 6px 0 60px 0;
+}
+
+/* ============================================================
+   Cards y Grid
+   ============================================================ */
+.card {
+  background-color: var(--card, #ffffff);
+  border: 1px solid var(--surface-1, #e0e3e6);
+  padding: 12px;
+  margin-bottom: 14px;
+  border-radius: var(--radius, 8px);
+}
+
+.card.small {
+  width: 30%;
+  float: left;
+  margin-right: 3.333%;
+}
+
+.card.small:last-child { margin-right: 0; }
+
+.grid::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* Section headings */
+.section h3 { color: var(--primary, #c94b4b); margin-bottom: 8px; }
+
+/* ============================================================
+   Tablas
+   ============================================================ */
+.table {
   width: 100%;
   border-collapse: collapse;
-  background: var(--card);
-  border-radius: var(--radius);
-  overflow: hidden; /* para que el sticky header quede dentro del radio */
-  box-shadow: var(--shadow);
-  display: block; /* permite scroll horizontal en móvil */
-  margin-bottom: 1rem;
-  overflow-x: auto;
+  margin-top: 8px;
 }
 
-/* Encabezado */
-thead th {
-  position: sticky;
-  top: 0;
-  background: linear-gradient(180deg, var(--surface-1), var(--card));
-  z-index: 2;
+.table th {
   text-align: left;
-  font-weight: 700;
-  padding: 0.8rem 1rem;
-  font-size: 0.95rem;
-  border-bottom: 1px solid rgba(11,20,40,0.06);
-}
-
-/* Filas y celdas */
-tbody td {
-  padding: 0.65rem 1rem;
-  vertical-align: middle;
-  font-size: 0.95rem;
-  border-bottom: 1px solid rgba(11,20,40,0.04);
-}
-
-/* Primera columna (ID) no envuelve */
-tbody td:first-child { white-space: nowrap; font-weight: 700; }
-
-/* Listas en celdas (refuerza inline styles presentes) */
-tbody td ul { margin: 0; padding-left: 1rem; }
-
-/* Zebra rows */
-tbody tr:nth-child(even) { background: rgba(11,20,40,0.02); }
-
-/* Hover para filas */
-tbody tr:hover { background: rgba(201,75,75,0.03); }
-
-/* -------------------------
-   Badges de estado
-   ------------------------- */
-.status {
-  display: inline-block;
-  padding: 0.25rem 0.5rem;
-  border-radius: 999px;
-  font-weight: 700;
-  font-size: 0.82rem;
-  color: white;
-}
-
-/* Estados específicos */
-.status.pendiente { background: var(--muted); }
-.status.en-preparacion { background: var(--primary); }
-.status.listo { background: #16a34a; }
-
-/* -------------------------
-   Botones
-   ------------------------- */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  padding: 0.36rem 0.6rem;
-  border-radius: 6px;
-  border: 1px solid transparent;
-  background: var(--primary);
-  color: white;
-  font-weight: 700;
+  background-color: var(--surface-1, #f0f4f8);
+  padding: 8px;
+  border: 1px solid #e1e6ea;
   font-size: 0.9rem;
-  cursor: pointer;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+}
+
+.table td {
+  padding: 8px;
+  border: 1px solid #e1e6ea;
+  font-size: 0.9rem;
+}
+
+.table.small td, .table.small th { padding: 6px; font-size: 0.85rem; }
+
+/* ============================================================
+   Helpers y utilidades
+   ============================================================ */
+hr {
+  border: none;
+  border-top: 1px solid #e6eaee;
+  margin: 16px 0;
+}
+
+.footer-note { margin-top: 10px; font-size: 0.85rem; color: #777; text-align: center; }
+
+/* Links */
+a.link, a { color: var(--primary, #c94b4b); text-decoration: none; }
+a.link:hover, a:hover { text-decoration: underline; }
+
+/* Screen-reader only helper */
+.sr-only {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
   white-space: nowrap;
 }
-.btn:hover { transform: translateY(-2px); background: var(--primary-600); box-shadow: 0 6px 18px rgba(180,63,63,0.12); }
-.btn:active { transform: translateY(0); }
 
-/* Variante: peligro */
-.btn-danger {
-  background: #dc2626;
-  border-color: rgba(0,0,0,0.04);
+/* Responsive fallback (simple) */
+@media screen and (max-width: 800px) {
+  .sidebar { display: none; position: static; height: auto; }
+  .main { margin-left: 0; padding: 12px; }
+  .card.small { width: 100%; margin-right: 0; margin-bottom: 12px; float: none; }
+  .login-card { margin: calc(var(--gap, 1rem) * 1.5) auto; padding: calc(var(--gap, 1rem) * 1); }
 }
-.btn-danger:hover { background: #b91c1c; }
-
-/* Variante: urgente */
-.btn-urgent {
-  background: linear-gradient(90deg, #ff7a59, #ff542f);
-  color: white;
-  box-shadow: 0 6px 18px rgba(255,122,89,0.12);
-}
-.btn-urgent:hover { filter: brightness(0.96); }
-
-/* Disabled */
-.btn[disabled], button[disabled] {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
-}
-
-/* -------------------------
-   Incidencias / textarea
-   ------------------------- */
-.incidencia-container { display: flex; width: 100%; }
-.incidencia-container textarea {
-  width: 100%;
-  min-height: 60px;
-  max-height: 220px;
-  padding: 0.5rem;
-  resize: vertical;
-  border-radius: 6px;
-  border: 1px solid rgba(11,20,40,0.06);
-  font-family: var(--type-sans);
-  font-size: 0.92rem;
-  color: #0b1428;
-  background: #fff;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-}
-.incidencia-container textarea::placeholder { color: rgba(11,20,40,0.35); font-weight: 600; }
-.incidencia-container textarea:focus {
-  outline: none;
-  border-color: rgba(201,75,75,0.28);
-  box-shadow: 0 4px 12px rgba(201,75,75,0.08);
-}
-
-/* -------------------------
-   Accesibilidad: focus-visible
-   ------------------------- */
-:focus { outline: none; }
-:focus-visible {
-  outline: 3px solid rgba(100,116,139,0.18);
-  outline-offset: 2px;
-  border-radius: 6px;
-}
-
-/* -------------------------
-   Responsive: convertir filas en tarjetas en pantallas pequeñas
-   ------------------------- */
-@media (max-width: 720px) {
-  thead th { font-size: 0.9rem; padding: 0.6rem; }
-  tbody td { padding: 0.6rem; font-size: 0.92rem; }
-
-  /* Transformar cada fila en "tarjeta" para mejor legibilidad */
-  table { display: block; }
-  thead { display: none; } /* ocultamos encabezado en vista tarjeta */
-  tbody tr {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.35rem;
-    padding: 0.6rem;
-    margin-bottom: 0.5rem;
-    border-radius: 8px;
-    background: var(--card);
-    border: 1px solid rgba(11,20,40,0.03);
-  }
-  tbody td { display: block; border-bottom: none; padding: 0; }
-  /* Indicadores visuales para campos */
-  tbody td:first-child::after { content: " — ID"; color: var(--muted); font-weight: 600; margin-left: 6px; font-size: 0.85rem; }
-  tbody td:nth-child(2)::before { content: "Cliente: "; font-weight: 700; color: var(--muted); display: inline-block; width: 80px; }
-  tbody td:nth-child(3)::before { content: "Items: "; font-weight: 700; color: var(--muted); display: inline-block; width: 80px; }
-  tbody td:nth-child(4)::before { content: "Estado: "; font-weight: 700; color: var(--muted); display: inline-block; width: 80px; }
-  tbody td:nth-child(5)::before { content: "Prioridad: "; font-weight: 700; color: var(--muted); display: inline-block; width: 80px; }
-  tbody td:nth-child(6)::before { content: "Incidencias: "; font-weight: 700; color: var(--muted); display: inline-block; width: 80px; }
-  tbody td:nth-child(7)::before { content: "Acciones: "; font-weight: 700; color: var(--muted); display: inline-block; width: 80px; }
-}
-
-/* -------------------------
-   Preferencias de movimiento reducido
-   ------------------------- */
-@media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; animation: none !important; }
-}
-
-/* -------------------------
-   Impresión (limpia)
-   ------------------------- */
-@media print {
-  body { background: white; color: black; }
-  .btn, .btn-danger, .btn-urgent { display: none !important; }
-  table { box-shadow: none; border: 1px solid #ddd; }
-  thead th { position: static; background: #f8f8f8; }
-}
-
-/* Fin de styles-cocina.css */
