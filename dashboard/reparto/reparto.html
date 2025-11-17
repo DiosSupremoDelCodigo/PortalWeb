@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Delicias APP · Tablero de Repartidor (Sprint 3)</title>
+<link rel="stylesheet" href="styles-reparto.css">
+
+</head>
+
+<body>
+<div class="container">
+  <header>
+    <h1>Delicias APP · Tablero de Repartidor</h1>
+    <div class="sub">Sprint 3 – Gestión de pedidos listos, tránsito y entrega final</div>
+  </header>
+
+  <section class="filters">
+    <select id="filtro-estado">
+      <option value="">Todos los estados</option>
+      <option value="pendiente">Pendiente</option>
+      <option value="en retiro">En retiro</option>
+      <option value="en tránsito">En tránsito</option>
+      <option value="entregado">Entregado</option>
+    </select>
+    <input type="text" id="filtro-busqueda" placeholder="Buscar por pedido o dirección...">
+  </section>
+
+  <section class="orders" id="orders"></section>
+
+  <footer>Versión Sprint 3 – Módulo Reparto · Delicias APP</footer>
+</div>
+
+<script>
+const pedidos = [
+  {id:"PED-301", cliente:"Mesa 5 (Local)", estado:"pendiente", direccion:"Av. Central 123", prioridad:"high", tiempo:20},
+  {id:"PED-302", cliente:"Delivery Juan Pérez", estado:"pendiente", direccion:"Calle 14 #320", prioridad:"med", tiempo:25},
+  {id:"PED-303", cliente:"Delivery Ana Torres", estado:"pendiente", direccion:"Los Robles 45", prioridad:"low", tiempo:30}
+];
+
+function render() {
+  const cont = document.getElementById("orders");
+  cont.innerHTML = "";
+  const filtro = document.getElementById("filtro-estado").value;
+  const search = document.getElementById("filtro-busqueda").value.toLowerCase();
+
+  pedidos.forEach(p => {
+    if (filtro && p.estado !== filtro) return;
+    if (search && !(p.id.toLowerCase().includes(search) || p.direccion.toLowerCase().includes(search))) return;
+
+    const el = document.createElement("div");
+    el.className = "order";
+    el.innerHTML = `
+      <div class="order-top">
+        <div>
+          <h3>${p.id}</h3>
+          <div class="meta">${p.cliente}</div>
+        </div>
+        <div class="priority ${p.prioridad}">${p.prioridad.toUpperCase()}</div>
+      </div>
+      <ul class="details">
+        <li><strong>Dirección:</strong> ${p.direccion}</li>
+        <li><strong>Estado:</strong> ${p.estado}</li>
+      </ul>
+      <div class="buttons">
+        ${p.estado === "pendiente" ? `
+          <button class="btn accept" onclick="updateState('${p.id}','en retiro')">Aceptar entrega</button>
+        ` : ""}
+        ${p.estado === "en retiro" ? `
+          <button class="btn transit" onclick="updateState('${p.id}','en tránsito')">En tránsito</button>
+        ` : ""}
+        ${p.estado === "en tránsito" ? `
+          <button class="btn delivered" onclick="confirmDelivery('${p.id}')">Confirmar entrega</button>
+        ` : ""}
+      </div>
+      <div class="timer">⏱️ Tiempo estimado: ${p.tiempo} min</div>
+      ${p.estado === "entregado" ? "<div class='meta' style='color:var(--success)'>✅ Entregado correctamente</div>" : ""}
+      <div class="note-area">
+        <textarea placeholder="Agregar nota o evidencia de entrega..."></textarea>
+        <input type="file" accept="image/*">
+      </div>
+    `;
+    cont.appendChild(el);
+  });
+}
+
+function updateState(id, nuevoEstado) {
+  const p = pedidos.find(x => x.id === id);
+  if (!p) return;
+  p.estado = nuevoEstado;
+  alert("Pedido " + id + " actualizado a: " + nuevoEstado);
+  render();
+}
+
+function confirmDelivery(id) {
+  const p = pedidos.find(x => x.id === id);
+  if (!p) return;
+  p.estado = "entregado";
+  alert("Pedido " + id + " marcado como ENTREGADO.");
+  render();
+}
+
+["filtro-estado","filtro-busqueda"].forEach(id=>{
+  document.getElementById(id).addEventListener("input", render);
+});
+render();
+</script>
+</body>
+</html>
