@@ -1,4 +1,9 @@
+
+/* Hola que hace */
+
+
 :root{
+
   --bg: #f6f7f9;
   --card: #ffffff;
   --primary: #c94b4b;
@@ -11,6 +16,7 @@
   --shadow: 0 6px 20px rgba(11,20,40,0.08);
   --transition-fast: 180ms ease;
   --type-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+
 }
 
 /* ------------------------------------------------------------
